@@ -30,6 +30,8 @@ export default createGlobalStyle`
     --gray-light: #6a737d;
     --gray-dark: #24292e;
     --orange: #f9826c;
+    --green: #04D361;
+    --green-dark: #04BF58;
     --logo: #fff;
     --header: #24292e;
     --username: #666;

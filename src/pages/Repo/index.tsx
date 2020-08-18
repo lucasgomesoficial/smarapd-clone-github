@@ -5,6 +5,7 @@ import { APIUser, APIRepo } from '../../@types';
 
 import ProfileData from '../../components/ProfileData';
 import RepoCard from '../../components/RepoCard';
+import Header from '../../components/Header';
 
 import {
   Container,
@@ -74,6 +75,7 @@ const Repo: React.FC = () => {
 
   return (
     <Container>
+      <Header/>
       <Tab className="desktop">
         <div className="wrapper">
           <span className="offset" />

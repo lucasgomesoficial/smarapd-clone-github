@@ -1,14 +1,40 @@
 import styled from 'styled-components';
 import { FaGithub } from 'react-icons/fa';
+import { FaUserAlt } from 'react-icons/fa';
+import { RiLogoutCircleRLine } from 'react-icons/ri';
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   background: var(--header);
   padding: 11px 16px;
+  margin: -24px -24px 16px -24px;
 `;
 
 export const GithubLogo = styled(FaGithub)`
+  fill: var(--logo);
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
+export const LoginIcon = styled(FaUserAlt)`
+  fill: var(--logo);
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  margin-right: 10px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
+export const LogoutIcon = styled(RiLogoutCircleRLine)`
   fill: var(--logo);
   width: 32px;
   height: 32px;
@@ -49,6 +75,7 @@ export const SearchForm = styled.form`
     border-radius: 5px;
     padding: 7px 8px;
     cursor: pointer;
+    flex-shrink: 0;
 
     @media(min-width: 768px) {
       margin-left: 10px;

@@ -19,6 +19,7 @@ import {
   BookIcon,
   Tab,
 } from './styles';
+import Header from '../../components/Header';
 
 
 interface Data {
@@ -81,6 +82,8 @@ const Profile: React.FC = () => {
 
   return (
     <Container>
+      <Header/>
+      
       <Tab className="desktop">
         <div className="wrapper">
           <span className="offset" />

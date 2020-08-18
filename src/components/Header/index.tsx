@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { Container, GithubLogo, SearchForm } from './styles';
+import { Container, GithubLogo, SearchForm, LoginIcon, LogoutIcon } from './styles';
 
 const Header: React.FC = () => {
   const [search, setSearch] = useState('');
@@ -18,7 +18,7 @@ const Header: React.FC = () => {
     <Container>
       <Link to='/'>
         <GithubLogo />
-      </Link>
+      </Link>      
       
       <SearchForm onSubmit={handleSubmit}>
         <input
@@ -32,6 +32,14 @@ const Header: React.FC = () => {
           onChange={(e) => setSearch(e.currentTarget.value)}
         >Buscar</button>
       </SearchForm>
+
+      <Link to=''>
+        <LoginIcon/>
+      </Link>
+      <Link to='/'>
+        <LogoutIcon/>
+      </Link>
+      
     </Container>
   );
 };
