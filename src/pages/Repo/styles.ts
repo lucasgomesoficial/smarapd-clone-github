@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { RiBookMarkLine } from 'react-icons/ri';
+import { RiBookOpenLine } from 'react-icons/ri';
 
 export const Container = styled.div`
   --horizontalPadding: 16px;
@@ -57,6 +58,12 @@ export const Repos = styled.div`
 `;
 
 export const RepoIcon = styled(RiBookMarkLine)`
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+`;
+
+export const BookIcon = styled(RiBookOpenLine)`
   width: 16px;
   height: 16px;
   margin-right: 4px;

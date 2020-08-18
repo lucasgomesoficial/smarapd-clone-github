@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { APIUser, APIRepo } from '../../@types';
 import { Link } from 'react-router-dom';
 
 import ProfileData from '../../components/ProfileData';
+import RepoCard from '../../components/RepoCard';
 import RandomCalendar from '../../components/RandomCalendar';
+
+import { APIUser, APIRepo } from '../../@types';
 
 import {
   Container,
   Main,
   LeftSide,
   RightSide,
+  Repos,
   CalendarHeading,
   RepoIcon,
+  BookIcon,
   Tab,
 } from './styles';
+
 
 interface Data {
   user?: APIUser;
@@ -29,18 +34,24 @@ const Profile: React.FC = () => {
   useEffect(() => {
     Promise.all([
       fetch(`https://api.github.com/users/${username}`),
+      fetch(`https://api.github.com/users/${username}/repos`),
     ]).then(async (responses) => {
-      const [userResponse] = responses;
+      const [userResponse, reposResponse] = responses;
 
       if (userResponse.status === 404) {
-        setData({ error: 'User not found!' });
+        setData({ error: 'Usuário não encontrado!' });
         return;
       }
 
       const user = await userResponse.json();
+      const repos = await reposResponse.json();
+
+      const shuffledRepos = repos.sort(() => 0.5 - Math.random());
+      const slicedRepos = shuffledRepos.slice(0, 4);
 
       setData({
         user,
+        repos: slicedRepos,
       });
     });
   }, [username]);
@@ -49,20 +60,20 @@ const Profile: React.FC = () => {
     return <h1>{data.error}</h1>;
   }
 
-  if (!data?.user) {
-    return <h1>Loading...</h1>;
+  if (!data?.user || !data?.repos) {
+    return <h1>Carregando...</h1>;
   }
 
   const TabContent = () => (
     <>
       <div className="content1">
-        <RepoIcon />
+        <BookIcon />
         <span className="label">Overview</span>
       </div>
-
-      <Link to={'/repositories'} className="content2">
+  
+      <Link to={`/${username}/repos`} className="content2">
         <RepoIcon />
-        <span className="label">Repositories</span>
+        <span className="label">Repositórios</span>
         <span className="number">{data.user?.public_repos}</span>
       </Link>
     </>
@@ -103,6 +114,24 @@ const Profile: React.FC = () => {
             <span className="line" />
           </Tab>
 
+          <Repos>
+            <h2>Repositórios random</h2>
+
+            <div>
+              {data.repos.map((item) => (
+                <RepoCard
+                  key={item.name}
+                  username={item.owner.login}
+                  reponame={item.name}
+                  description={item.description}
+                  language={item.language}
+                  stars={item.stargazers_count}
+                  forks={item.forks}
+                />
+              ))}
+            </div>
+          </Repos>
+
           <CalendarHeading>
             Random calendar (do not represent actual data)
           </CalendarHeading>
@@ -112,6 +141,6 @@ const Profile: React.FC = () => {
       </Main>
     </Container>
   );
-}
+};
 
 export default Profile;

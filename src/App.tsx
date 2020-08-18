@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Repo from './pages/Repo';
+import Footer from './components/Footer';
 
 import GlobalStyles from './styles/GlobalStyles';
 
@@ -18,10 +19,10 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/overview" element={<Profile />} />
           <Route path="/:username" element={<Profile />} />
-          <Route path="/repositories" element={<Repo />} />
+          {/* <Route path="/repositories" element={<Repo />} /> */}
           <Route path="/:username/:reponame" element={<Repo />} />
         </Routes>
-      {/* <Footer /> */}
+      <Footer />
 
       <GlobalStyles />
     </BrowserRouter>

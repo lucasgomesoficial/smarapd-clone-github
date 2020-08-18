@@ -13,6 +13,7 @@ import {
   RightSide,
   Repos,
   RepoIcon,
+  BookIcon,
   Tab,
 } from './styles';
 
@@ -58,14 +59,14 @@ const Repo: React.FC = () => {
 
   const TabContent = () => (
     <>
-      <Link to={'/overview'} className="content2">
-        <RepoIcon />
+      <Link to={`/${username}`} className="content2">
+        <BookIcon />
         <span className="label">Overview</span>
       </Link>
 
       <div className="content1">
         <RepoIcon />
-        <span className="label">Repositories</span>
+        <span className="label">Repositórios</span>
         <span className="number">{data.user?.public_repos}</span>
       </div>
     </>
