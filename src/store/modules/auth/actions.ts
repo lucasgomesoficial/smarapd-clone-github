@@ -7,9 +7,9 @@ export function signInRequest({ username, password }: { username: string; passwo
   });
 }
 
-export function signInSuccess({ token }: { token: string }) {
+export function signInSuccess({ login }: { login: string }) {
   return action('@auth/SIGN_IN_SUCCESS', {
-    token,
+    login,
   });
 }
 

@@ -3,17 +3,15 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import ProfileData from '../../components/ProfileData';
-import RepoCard from '../../components/RepoCard';
 import RandomCalendar from '../../components/RandomCalendar';
 
-import { APIUser, APIRepo } from '../../@types';
+import { APIUser } from '../../@types';
 
 import {
   Container,
   Main,
   LeftSide,
   RightSide,
-  Repos,
   CalendarHeading,
   RepoIcon,
   BookIcon,
@@ -24,7 +22,6 @@ import Header from '../../components/Header';
 
 interface Data {
   user?: APIUser;
-  repos?: APIRepo[];
   error?: string;
 }
 
@@ -37,7 +34,7 @@ const Profile: React.FC = () => {
       fetch(`https://api.github.com/users/${username}`),
       fetch(`https://api.github.com/users/${username}/repos`),
     ]).then(async (responses) => {
-      const [userResponse, reposResponse] = responses;
+      const [userResponse] = responses;
 
       if (userResponse.status === 404) {
         setData({ error: 'Usuário não encontrado!' });
@@ -45,14 +42,9 @@ const Profile: React.FC = () => {
       }
 
       const user = await userResponse.json();
-      const repos = await reposResponse.json();
-
-      const shuffledRepos = repos.sort(() => 0.5 - Math.random());
-      const slicedRepos = shuffledRepos.slice(0, 4);
 
       setData({
         user,
-        repos: slicedRepos,
       });
     });
   }, [username]);
@@ -61,7 +53,7 @@ const Profile: React.FC = () => {
     return <h1>{data.error}</h1>;
   }
 
-  if (!data?.user || !data?.repos) {
+  if (!data?.user) {
     return <h1>Carregando...</h1>;
   }
 
@@ -116,24 +108,6 @@ const Profile: React.FC = () => {
             
             <span className="line" />
           </Tab>
-
-          <Repos>
-            <h2>Repositórios random</h2>
-
-            <div>
-              {data.repos.map((item) => (
-                <RepoCard
-                  key={item.name}
-                  username={item.owner.login}
-                  reponame={item.name}
-                  description={item.description}
-                  language={item.language}
-                  stars={item.stargazers_count}
-                  forks={item.forks}
-                />
-              ))}
-            </div>
-          </Repos>
 
           <CalendarHeading>
             Random calendar (do not represent actual data)

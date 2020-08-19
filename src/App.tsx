@@ -4,9 +4,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
+import Repo from './pages/Repo';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
-import Repo from './pages/Repo';
 import Footer from './components/Footer';
 import { store } from './store';
 

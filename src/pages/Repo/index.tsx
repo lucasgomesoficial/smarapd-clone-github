@@ -6,6 +6,7 @@ import { APIUser, APIRepo } from '../../@types';
 import ProfileData from '../../components/ProfileData';
 import RepoCard from '../../components/RepoCard';
 import Header from '../../components/Header';
+import ModalRepo from '../../modal/ModalRepo';
 
 import {
   Container,
@@ -27,6 +28,7 @@ interface Data {
 const Repo: React.FC = () => {
   const { username = 'gaearon' } = useParams();
   const [data, setData] = useState<Data>();
+  const [modalVisible, setModalVisible] = useState(null)
 
   useEffect(() => {
     Promise.all([
@@ -117,9 +119,15 @@ const Repo: React.FC = () => {
                   username={item.owner.login}
                   reponame={item.name}
                   description={item.description}
+                  onClickModal={() => setModalVisible(item.name)}
+                />
+              ))}
+              {data.repos.map((item) => (
+                <ModalRepo
                   language={item.language}
                   stars={item.stargazers_count}
                   forks={item.forks}
+                  isOpen={false}
                 />
               ))}
             </div>

@@ -9,7 +9,7 @@ export function* signIn({ payload }: ActionType<typeof actions.signInRequest>) {
 
     const { data } = yield call(api.post, '', { username, password });
 
-    yield put(actions.signInSuccess({ token: data.token }));
+    yield put(actions.signInSuccess({ login: data.login }));
   } catch (err) {
     yield put(actions.signInFailure());
   }

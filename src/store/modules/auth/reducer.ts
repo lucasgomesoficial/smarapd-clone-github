@@ -4,7 +4,7 @@ const initialState: AuthState = {
   loadingSignInRequest: false,
   isSignedIn: false,  
   error: false,
-  token: null,
+  login: null,
 };
 
 export default function auth(
@@ -22,7 +22,7 @@ export default function auth(
         ...state,
         loadingSignInRequest: false,
         isSignedIn: true,
-        token: action.payload.token,
+        login: action.payload.login,
       };
     case '@auth/SIGN_IN_FAILURE':
       return {

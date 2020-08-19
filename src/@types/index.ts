@@ -12,7 +12,7 @@ export interface APIUser {
 }
 
 export interface APIRepo {
-  name: string;
+  name: any;
   owner: {
     login: string;
   };

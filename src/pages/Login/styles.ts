@@ -65,12 +65,12 @@ export const LoginForm = styled.div`
     margin-bottom: 10px;
   }
 
-  button {
+  a {
     color: var(--primary);
     background: var(--green);
     border-radius: 5px;
     padding: 7px 70px;
-    cursor: pointer;
+    text-decoration: none;
     display: flex;
     justify-items: flex-end;
 

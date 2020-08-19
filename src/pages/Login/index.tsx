@@ -1,37 +1,50 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { StoreState } from '../../store/createStore';
-import { signInRequest } from '../../store/modules/auth/actions';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container, LoginForm, GithubLogo } from './styles';
 
 const Login: React.FC = () => {
-  const { loadingSignInRequest, isSignedIn, token } = useSelector((state: StoreState) => state.auth);
-  const dispatch = useDispatch();
+  const [form, setForm] = useState({username: '', password: ''});
 
-  console.log('msg: ', token);
+  const changeForm = (event: { target: { name: string; value: string; }; }) => {
+    const {name, value} = event.target;
+
+    setForm({ ...form, [name]: value });
+  }
+
+  const submitForm = (event: any) => {
+    event.preventDefault();
+
+    console.log(form)
+
+    setForm({username: '', password: ''})
+  }
 
   return (
     <Container>
       <GithubLogo />
 
-      <LoginForm>
+      <LoginForm onSubmit={submitForm}>
         <h1>Acesso ao GitHub:</h1>
 
         <input
           placeholder="Usuário"
+          onChange={changeForm}
           name="username"
           type="text"
+          value={form.username}
         />
 
         <input
           placeholder="Senha"
+          onChange={changeForm}
           name="password"
           type="password"
+          value={form.password}
         />
 
-  <button onClick={() => dispatch(signInRequest({ username: 'admin', password: 'password' }))}>{loadingSignInRequest ? 'Carregando' : 'Entrar'}</button>
+        <Link to={'/overview'}>Entrar</Link>
+
       </LoginForm>
     </Container>
   );

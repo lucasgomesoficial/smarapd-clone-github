@@ -16,6 +16,7 @@ export const GithubLogo = styled(FaGithub)`
   width: 32px;
   height: 32px;
   flex-shrink: 0;
+  margin-bottom: -5px;
 
   &:hover {
     opacity: 0.7;
@@ -50,11 +51,7 @@ export const SearchForm = styled.form`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-
-  @media(min-width: 768px) {
-    justify-content: flex-start;
-  }
+  justify-content: flex-start;
 
   input {
     background: var(--search);
@@ -74,11 +71,10 @@ export const SearchForm = styled.form`
     border: 1px solid var(--primary);
     border-radius: 5px;
     padding: 7px 8px;
-    cursor: pointer;
-    flex-shrink: 0;
+    margin-left: 10px;
 
     @media(min-width: 768px) {
-      margin-left: 10px;
+      cursor: pointer;
     }
   }
 `;

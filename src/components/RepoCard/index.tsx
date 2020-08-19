@@ -5,57 +5,33 @@ import {
   Container,
   Topside,
   RepoIcon,
-  Botside,
-  StarIcon,
-  ForkIcon,
 } from './styles';
 
 interface Props {
   username: string;
-  reponame: string;
+  reponame: any;
   description?: string;
-  language?: string;
-  stars: number;
-  forks: number;
+  onClickModal: any;
 }
 
 const RepoCard: React.FC<Props> = ({
   username,
   reponame,
   description,
-  language,
-  stars,
-  forks,
+  onClickModal,
 }) => {
-  const languageClass = language ? language.toLowerCase() : 'other';
-
+  
   return (
     <Container>
       <Topside>
         <header>
           <RepoIcon />
           <Link to={`/${username}/${reponame}`}>{reponame}</Link>
+          <button onClick={onClickModal}/>
         </header>
 
         <p>{description}</p>
       </Topside>
-
-      <Botside>
-        <ul>
-          <li>
-            <div className={`language ${languageClass}`} />
-            <span>{language}</span>
-          </li>
-          <li>
-            <StarIcon />
-            <span>{stars}</span>
-          </li>
-          <li>
-            <ForkIcon />
-            <span>{forks}</span>
-          </li>
-        </ul>
-      </Botside>
     </Container>
   );
 };
