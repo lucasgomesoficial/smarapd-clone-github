@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/smarapd-clone-github/static/js/main.81903952.chunk.js",
+    "main.js.map": "/smarapd-clone-github/static/js/main.81903952.chunk.js.map",
+    "runtime-main.js": "/smarapd-clone-github/static/js/runtime-main.f146ec86.js",
+    "runtime-main.js.map": "/smarapd-clone-github/static/js/runtime-main.f146ec86.js.map",
+    "static/css/2.32a52a2a.chunk.css": "/smarapd-clone-github/static/css/2.32a52a2a.chunk.css",
+    "static/js/2.aa68ef78.chunk.js": "/smarapd-clone-github/static/js/2.aa68ef78.chunk.js",
+    "static/js/2.aa68ef78.chunk.js.map": "/smarapd-clone-github/static/js/2.aa68ef78.chunk.js.map",
+    "index.html": "/smarapd-clone-github/index.html",
+    "precache-manifest.a188df1cd9ff6e5bf0ec0d61149d326a.js": "/smarapd-clone-github/precache-manifest.a188df1cd9ff6e5bf0ec0d61149d326a.js",
+    "service-worker.js": "/smarapd-clone-github/service-worker.js",
+    "static/css/2.32a52a2a.chunk.css.map": "/smarapd-clone-github/static/css/2.32a52a2a.chunk.css.map",
+    "static/js/2.aa68ef78.chunk.js.LICENSE.txt": "/smarapd-clone-github/static/js/2.aa68ef78.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f146ec86.js",
+    "static/css/2.32a52a2a.chunk.css",
+    "static/js/2.aa68ef78.chunk.js",
+    "static/js/main.81903952.chunk.js"
+  ]
+}
